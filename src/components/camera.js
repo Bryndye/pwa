@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-// import { showNotification } from '../notification'
+import { showNotification } from '../notification'
 
 function Camera(props){
     const {isOnline} = props
@@ -40,7 +40,7 @@ function Camera(props){
     useEffect(() => {
         let new_id = uuidv4()
         localStorage.setItem('images/'+new_id, image)
-        // showNotification("En sah t'as pris une photo! \n"+new_id)
+        showNotification("En sah t'as pris une photo! \n"+new_id)
 
         if (isOnline) {
             console.log('REQUETE POST')

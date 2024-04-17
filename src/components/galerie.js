@@ -31,11 +31,11 @@ function Galerie(props) {
         const image = localStorage.getItem(key);
 
         if (image === undefined || image === 'null'){
-            localStorage.removeItem(key)
-            console.log('Image not found')
+          localStorage.removeItem(key)
+          console.log('Image not found')
         }
         else{
-            storedImages.push(image);
+          storedImages.push(image);
         }
       }
     }
