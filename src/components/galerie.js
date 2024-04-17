@@ -1,7 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import { showNotification } from '../notification';
 
-function Galerie() {
+function Galerie(props) {
+  const { isOnline } = props;
   const [images, setImages] = useState([]);
+
+  
+  useEffect(() => {
+    if (isOnline) {
+      const keys = Object.keys(localStorage);
+
+      for (const key of keys) {
+        if (key.startsWith('to_sync/')) {
+          const value = localStorage.getItem(key);
+          console.log(key, value);
+
+          showNotification("Photo en ligne !")
+          localStorage.removeItem(key);
+        }
+      }
+    }
+  }, [isOnline]);
 
   useEffect(() => {
     let storedImages = [];
@@ -25,7 +44,7 @@ function Galerie() {
   }, []);
 
   return (
-    <div>
+    <div className='galerie'>
       {images.map((image, index) => (
         <img key={index} src={image} alt={`Stored ${index}`} />
       ))}

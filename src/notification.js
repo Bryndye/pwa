@@ -11,10 +11,15 @@ export const requestPermission = async () => {
   
 export const showNotification = async (title, options) => {
     if (!("Notification" in window)) {
-        throw new Error("Notification not supported");
+      throw new Error("Notification not supported");
     }
     if (window.Notification.permission !== "granted") {
-        throw new Error("Permission not granted for Notification");
+      throw new Error("Permission not granted for Notification");
+    }
+    if ("vibrate" in navigator) {
+      navigator.vibrate(200);
     }
     return new window.Notification(title, options);
 };
+
+requestPermission()
