@@ -70,3 +70,28 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+var isOnline = true;
+// navigator.onLine ? isOnline = true : isOnline = false;
+self.addEventListener('online', () => {
+  console.log('You are now connected to the network.')  
+  isOnline  = true;
+  // Envoyer un message à la page cliente
+  self.clients.matchAll().then(clients => {
+    clients.forEach(client => {
+      client.postMessage({ type: 'variable', data: {isOnline} });
+    });
+  });
+});
+
+self.addEventListener('offline', () => {
+  debugger;
+  console.log('You have lost connection to the network.')
+
+  isOnline = false;
+    // Envoyer un message à la page cliente
+    self.clients.matchAll().then(clients => {
+      clients.forEach(client => {
+        client.postMessage({ type: 'variable', data: {isOnline} });
+      });
+    });
+});

@@ -4,19 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Home from './components/Home';
-// import * as serviceWorker from './service-worker';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <BrowserRouter>
-      <Routes>
-        <Route path="/*" element={<App />}/>
-        <Route path="/home" element={<Home />}/>
-      </Routes>
-    </BrowserRouter> */}
     <App />
   </React.StrictMode>
 );
@@ -24,7 +15,18 @@ root.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
-serviceWorkerRegistration.register();
+serviceWorkerRegistration.register({
+  onSuccess: (registration) => {
+    debugger;
+    console.log('Service Worker registered with scope:', registration.scope);
+  },
+  onUpdate: (registration) => {
+    console.log('Service Worker updated.');
+  },
+  onError: (error) => {
+    console.log('Service Worker registration failed:', error);
+  },
+});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
