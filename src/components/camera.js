@@ -38,9 +38,14 @@ function Camera(props){
     }
 
     useEffect(() => {
+        if (!image && image === null) {
+            return
+        }
+        showNotification(image)
+
         let new_id = uuidv4()
         localStorage.setItem('images/'+new_id, image)
-        showNotification("En sah t'as pris une photo! \n"+new_id)
+        showNotification("En sah t'as pris! \n"+new_id)
 
         if (isOnline) {
             console.log('REQUETE POST')

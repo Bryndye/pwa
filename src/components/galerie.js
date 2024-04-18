@@ -44,11 +44,14 @@ function Galerie(props) {
   }, []);
 
   return (
-    <div className='galerie'>
-      {images.map((image, index) => (
-        <img key={index} src={image} alt={`Stored ${index}`} />
-      ))}
-    </div>
+    <section>
+      <h2>Galerie</h2>
+      <div className='galerie'>
+        {images.map((image, index) => (
+          <img key={index} src={image} alt={`Stored ${index}`} />
+        ))}
+      </div>
+    </section>
   );
 }
 
