@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Galerie from './components/galerie';
 import Camera from './components/camera';
 // import Geolocation from './components/geolocation';
-import getBattery from './components/battery';
+import Battery from './components/battery';
 import './App.css';
 
 const getOnLineStatus = () => typeof navigator !== 'undefined' && typeof navigator.onLine === 'boolean' ? navigator.onLine : false;
@@ -34,7 +34,7 @@ function App() {
 
         <div className='data_header'>
           <i className={`fa-solid fa-wifi ${ isOnline ? '' : 'no_connection'}`}></i>
-          {getBattery()}
+          <Battery />
         </div>
       </header>
 
