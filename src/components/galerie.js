@@ -9,15 +9,22 @@ function Galerie(props) {
   useEffect(() => {
     if (isOnline) {
       const keys = Object.keys(localStorage);
-
+      let total = 0
       for (const key of keys) {
         if (key.startsWith('to_sync/')) {
           const value = localStorage.getItem(key);
           console.log(key, value);
 
-          showNotification("Photo en ligne !")
           localStorage.removeItem(key);
+          total += 1;
         }
+      }
+      if (total > 0){
+        let end_sentence = total+" photo";
+        if (total > 1){
+          end_sentence = total+" photos";
+        }
+        showNotification("Mis en ligne de "+end_sentence)
       }
     }
   }, [isOnline]);

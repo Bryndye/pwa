@@ -40,7 +40,7 @@ function Battery() {
         <div className='battery_section'>
             <div className='battery'>
                 <img src={battery_img} alt="Batterie" />
-                { battery_charging ? <i class="fa-solid fa-bolt black"></i> : ''}
+                { battery_charging ? <i className="fa-solid fa-bolt black"></i> : ''}
             </div>
             <p>{battery_level}%</p>
         </div>
