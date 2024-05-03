@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Galerie from './components/galerie';
@@ -11,19 +12,27 @@ const getOnLineStatus = () => typeof navigator !== 'undefined' && typeof navigat
 function App() {
   // is online //
   const [isOnline, setIsOnline] = useState(getOnLineStatus())
-  
+
   useEffect(() => {
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
-    
+    const handleOnline = () => {
+      setIsOnline(true);
+      console.log('ONLINE')
+    };
+    const handleOffline = () => {
+      setIsOnline(false);
+      console.log('OFFLINE');
+    };
+
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
-    
+
     return () => {
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
     };
   }, []);
+
+  console.log(navigator.onLine)
   // end is online //
 
   
