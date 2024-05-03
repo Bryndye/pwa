@@ -21,54 +21,19 @@ function Battery() {
     useEffect(() => {
         if (!battery) return;
 
-        setLevel(battery.level);
+        setLevel(battery.level * 100);
 
-        // function updateChargeInfo() {
-        //     console.log("Battery en charge ? " + (battery.charging ? "Oui" : "Non"));
-        // }
+        if (battery.level > 0.7) {
+            setBatteryImg(highBattery);
+        } else if (battery.level > 0.5) {
+            setBatteryImg(threequarterBattery);
+        } else if (battery.level > 0.3) {
+            setBatteryImg(mediumBattery);
+        } else {
+            setBatteryImg(lowBattery);
+        }
 
-        // function updateLevelInfo() {
-        //     setLevel(battery.level * 100);
-        //     if (battery.level > 0.7) {
-        //         setBatteryImg(highBattery);
-        //     } else if (battery.level > 0.5) {
-        //         setBatteryImg(threequarterBattery);
-        //     } else if (battery.level > 0.3) {
-        //         setBatteryImg(mediumBattery);
-        //     } else {
-        //         setBatteryImg(lowBattery);
-        //     }
-        // }
-
-        // function updateChargingInfo() {
-        //     console.log(
-        //         "Temps avant charge de la batterie : " +
-        //         battery.chargingTime +
-        //         " secondes"
-        //     );
-        //     setCharging(true);
-        // }
-
-        // function updateDischargingInfo() {
-        //     console.log(
-        //         "Temps avant décharge de la batterie : " +
-        //         battery.dischargingTime +
-        //         " secondes"
-        //     );
-        //     setCharging(false);
-        // }
-
-        // addEventListener("chargingchange", updateChargeInfo);
-        // addEventListener("levelchange", updateLevelInfo);
-        // addEventListener("chargingtimechange", updateChargingInfo);
-        // addEventListener("dischargingtimechange", updateDischargingInfo);
-
-        // return () => {
-        //     battery.removeEventListener("chargingchange", updateChargeInfo);
-        //     battery.removeEventListener("levelchange", updateLevelInfo);
-        //     battery.removeEventListener("chargingtimechange", updateChargingInfo);
-        //     battery.removeEventListener("dischargingtimechange", updateDischargingInfo);
-        // };
+        setCharging(Battery.charging);
     }, [battery]);
 
     return (
