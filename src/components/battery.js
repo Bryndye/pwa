@@ -33,14 +33,14 @@ function Battery() {
             setBatteryImg(lowBattery);
         }
 
-        setCharging(Battery.charging);
+        setCharging(battery.charging);
     }, [battery]);
 
     return (
         <div className='battery_section'>
             <div className='battery'>
                 <img src={battery_img} alt="Batterie" />
-                { battery_charging ? <p>En charge</p> : ''}
+                { battery_charging ? <i class="fa-solid fa-bolt black"></i> : ''}
             </div>
             <p>{battery_level}%</p>
         </div>

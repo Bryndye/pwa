@@ -191,3 +191,7 @@ h2{
   height: 100%;
   object-fit: contain;
 }
+
+.black{
+  color: black !important;
+}
