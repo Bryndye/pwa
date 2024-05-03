@@ -19,6 +19,9 @@ export const showNotification = async (title, options) => {
     if ("vibrate" in navigator) {
       navigator.vibrate(200);
     }
+    options = {
+      icon: "/favicon.ico"
+    }
     return new window.Notification(title, options);
 };
 

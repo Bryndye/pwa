@@ -21,7 +21,7 @@ function Battery() {
     useEffect(() => {
         if (!battery) return;
 
-        setLevel(battery.level * 100);
+        setLevel(Math.round(battery.level * 100));
 
         if (battery.level > 0.7) {
             setBatteryImg(highBattery);

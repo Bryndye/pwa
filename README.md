@@ -1,16 +1,26 @@
-TP : https://formation.anjousoft.fr/Vuejs/TP_fullstack.php
-Objectifs:
-- camera photo
-- notifications
-- position géographique
-- mode offline
-- stockage de la photo en local
+## PWA demo
+The pwa is base on this subject :
+https://formation.anjousoft.fr/Vuejs/TP_fullstack.php
 
-- Passer un appel téléphonique
-- Vibration sur une notification
-- niveau de batterie
-- WebOTP API, lire un SMS pour une validation d'un mdp
+## Installation
+npm install
 
-service worker: https://medium.com/samsung-internet-dev/pwa-series-service-workers-the-basics-about-offline-a6e8f1d92dfd
-camera open : https://medium.com/@alifazmiruddin/how-to-create-a-camera-and-natively-access-with-react-pwa-5e0257b1f63a
-notification: https://sichii.medium.com/how-to-implement-push-notifications-in-pwa-using-react-fd689f8394d3
+# Run Application
+npm run build
+
+## Objectives:
+# Simple PWA
+- Use the camera of a device (Implemented)
+- Notifications push (Implemented)
+- Geolocation (Implemented)
+- Offline mode (Implemented)
+- Stock photos into localstorage (Implemented)
+
+# Online PWA
+- Can make a phone call (Not)
+- Vibration on notifications (Implemented)
+- Battery level (Implemented)
+- WebOTP API, read a SMS (Not)
+
+# PWA Connected
+- In a team, can use a tchat and make a call video (Not)
