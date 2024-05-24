@@ -6,7 +6,7 @@ import Camera from './components/camera';
 // import Geolocation from './components/geolocation';
 import Battery from './components/battery';
 import Phone from './components/phone';
-import Webotp from './components/webotp';
+// import Webotp from './components/webotp';
 import './App.css';
 
 const getOnLineStatus = () => typeof navigator !== 'undefined' && typeof navigator.onLine === 'boolean' ? navigator.onLine : false;
@@ -50,7 +50,7 @@ function App() {
       </header>
 
       <Phone />
-      <Webotp />
+      {/* <Webotp /> */}
       <Camera isOnline={isOnline} />
       <Galerie isOnline={isOnline} />
     </div>
