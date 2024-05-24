@@ -1,42 +1,34 @@
-import {React, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Webotp(){
+function Webotp() {
+    const [otp, setOtp] = useState("");
+
     useEffect(() => {
-        if ('OTPCredential' in window) {
-            window.addEventListener('DOMContentLoaded', e => {
-                const input = document.querySelector('input[autoComplete="one-time-code"]');
-                if (!input) return;
-                    const ac = new AbortController();
-                    const form = input.closest('form');
-                if (form) {
-                    form.addEventListener('submit', e => {
+        if ("OTPCredential" in window) {
+            const ac = new AbortController();
+
+            navigator.credentials
+                .get({
+                    otp: { transport: ["sms"] },
+                    signal: ac.signal,
+                })
+                .then((otp) => {
+                    setOtp(otp.code);
                     ac.abort();
-                    });
-                }
-                navigator.credentials.get({
-                    otp: { transport:['sms'] },
-                    signal: ac.signal
-                }).then(otp => {
-                    input.value = otp.code;
-                    if (form) form.submit();
-                }).catch(err => {
+                })
+                .catch((err) => {
+                    ac.abort();
                     console.log(err);
                 });
-            });
         }
     }, []);
-
-      
 
     return (
         <div>
             <h1>Web OTP</h1>
-            <form>
-                <input autoComplete="one-time-code" required/>
-                <input type="submit" />
-            </form>
+            <p>{otp}</p>
         </div>
-    )
+    );
 }
 
 export default Webotp;

@@ -49,10 +49,10 @@ function App() {
         </div>
       </header>
 
-      <Camera isOnline={isOnline} />
-      <Galerie isOnline={isOnline} />
       <Phone />
       <Webotp />
+      <Camera isOnline={isOnline} />
+      <Galerie isOnline={isOnline} />
     </div>
   );
 }
